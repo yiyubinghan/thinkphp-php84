@@ -21,9 +21,9 @@ services:
         #     - REDIS_CLIENT=phpredis
         #     - REDIS_HOST=
         #     - REDIS_PORT=6379
+        restart: always
         volumes:
             - '.:/app'
-        restart: always
         networks:
             - thinkphp-network
 
