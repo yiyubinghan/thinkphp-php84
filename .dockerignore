@@ -8,12 +8,9 @@ runtime/*
 .idea/
 .vscode/
 .DS_Store
-
-
-# vendor
+/vendor
 
 # bootstrap/cache/*
-# storage/logs/*
 # *.md
 # *.log
 # tests/

@@ -19,3 +19,17 @@ Route::get('hello/:name', 'index/hello');
 Route::get('phpinfo', function () {
     return phpinfo();
 });
+
+Route::get('/time', function () {
+    return date('Y-m-d H:i:s', time());
+});
+
+Route::get('/opcache', function () {
+    return print_r(opcache_get_status());
+});
+
+Route::group('api', function (){
+    // Route::get('test-concurrency-1', [App\Http\Controllers\TestController::class, 'testConcurrency1']);
+    // Route::get('test-concurrency-2', [App\Http\Controllers\TestController::class, 'testConcurrency2']);
+    // Route::get('test-redis', [App\Http\Controllers\TestController::class, 'testRedis']);
+});
