@@ -1,0 +1,23 @@
+.git
+.gitignore
+.dockerignore
+docker/dev/Dockerfile
+compose.*.yml
+runtime/*
+.env
+.idea/
+.vscode/
+.DS_Store
+
+
+# vendor
+
+# bootstrap/cache/*
+# storage/logs/*
+# *.md
+# *.log
+# tests/
+# storage/logs/*
+# public/uploads/*
+# .env.local
+# node_modules/

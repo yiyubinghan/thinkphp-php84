@@ -1,0 +1,30 @@
+services:
+    server-dev:
+        build:
+            context: .
+            dockerfile: ./docker/dev/Dockerfile
+        image: thinkphp-php84-server-dev
+        container_name: thinkphp-php84-server-dev
+        ports:
+            - "8000:8000"
+            # - "8000:81"
+        # environment:
+        #     - APP_NAME=ThinkPHP(dev)
+        #     - APP_ENV=dev
+        #     - APP_DEBUG=true
+        #     - DB_CONNECTION=mysql
+        #     - DB_HOST=
+        #     - DB_PORT=3306
+        #     - DB_DATABASE=
+        #     - DB_USERNAME=
+        #     - DB_PASSWORD=
+        #     - REDIS_CLIENT=phpredis
+        #     - REDIS_HOST=
+        #     - REDIS_PORT=6379
+        restart: always
+        networks:
+            - thinkphp-network
+
+networks:
+    thinkphp-network:
+        driver: bridge
