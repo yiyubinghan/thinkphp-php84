@@ -6,8 +6,7 @@ services:
         image: thinkphp-php84-server-dev
         container_name: thinkphp-php84-server-dev
         ports:
-            - "8000:8000"
-            # - "8000:81"
+            - "8000:80"
         # environment:
         #     - APP_NAME=ThinkPHP(dev)
         #     - APP_ENV=dev

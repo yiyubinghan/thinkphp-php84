@@ -4,6 +4,25 @@ FROM php:8.4.15-fpm-alpine
 # 设置工作目录
 WORKDIR /app
 
+# 复制 OPcache配置文件
+COPY docker/dev/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# 复制 php-fpm配置文件
+COPY docker/dev/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY docker/dev/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
+
+# 安装系统依赖
+RUN apk add --no-cache nginx supervisor
+
+# 复制 nginx配置文件
+COPY docker/dev/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/dev/nginx/http.d /etc/nginx/http.d
+
+# 安装和配置 Supervisor
+RUN mkdir -p /var/log/supervisor
+COPY docker/dev/supervisord/supervisord.conf /etc/supervisord.conf
+COPY docker/dev/supervisord/supervisor.d /etc/supervisor.d
+
 # 安装 PHP 扩展 bcmath swoole
 RUN docker-php-ext-install pdo_mysql
 
@@ -13,11 +32,5 @@ RUN docker-php-ext-install pdo_mysql
 # 安装 Composer
 COPY --from=composer:2.9.2 /usr/bin/composer /usr/bin/composer
 
-# 安装 Composer 依赖
-# RUN composer install
-
-# 设置文件权限
-# RUN chown -R www-data:www-data /app && chmod -R 777 /app/runtime
-
 # 启动命令
-CMD [ "php", "think", "run" ]
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]

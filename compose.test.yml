@@ -6,7 +6,7 @@ services:
         image: thinkphp-php84-server-test
         container_name: thinkphp-php84-server-test
         ports:
-            - "8000:8000"
+            - "8000:80"
         # environment:
         #     - APP_DEBUG=true
         #     - DEFAULT_LANG=zh-cn
