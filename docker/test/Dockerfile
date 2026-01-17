@@ -8,16 +8,16 @@ WORKDIR /app
 RUN docker-php-ext-install pdo_mysql
 
 # 复制
-# COPY . .
+COPY . .
 
 # 安装 Composer
 COPY --from=composer:2.9.2 /usr/bin/composer /usr/bin/composer
 
 # 安装 Composer 依赖
-# RUN composer install
+RUN composer install
 
 # 设置文件权限
-# RUN chown -R www-data:www-data /app && chmod -R 777 /app/runtime
+RUN chown -R www-data:www-data /app && chmod -R 777 /app/runtime
 
 # 启动命令
 CMD [ "php", "think", "run" ]

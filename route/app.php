@@ -20,16 +20,17 @@ Route::get('phpinfo', function () {
     return phpinfo();
 });
 
-Route::get('/time', function () {
+Route::get('time', function () {
     return date('Y-m-d H:i:s', time());
 });
 
-Route::get('/opcache', function () {
-    return print_r(opcache_get_status());
+Route::get('opcache', function () {
+    print_r(opcache_get_status());
 });
 
 Route::group('api', function (){
-    // Route::get('test-concurrency-1', [App\Http\Controllers\TestController::class, 'testConcurrency1']);
-    // Route::get('test-concurrency-2', [App\Http\Controllers\TestController::class, 'testConcurrency2']);
+    //登录
+    Route::get('test-concurrency-1', 'test/testConcurrency1');
+    Route::get('test-concurrency-2', 'test/testConcurrency2');
     // Route::get('test-redis', [App\Http\Controllers\TestController::class, 'testRedis']);
 });

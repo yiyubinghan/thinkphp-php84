@@ -1,0 +1,29 @@
+services:
+    server-test:
+        build:
+            context: .
+            dockerfile: ./docker/test/Dockerfile
+        image: thinkphp-php84-server-test
+        container_name: thinkphp-php84-server-test
+        ports:
+            - "8000:8000"
+        # environment:
+        #     - APP_DEBUG=true
+        #     - DEFAULT_LANG=zh-cn
+        #     - DB_TYPE=mysql
+        #     - DB_HOST=
+        #     - DB_NAME=
+        #     - DB_USER=root
+        #     - DB_PASS=
+        #     - DB_PORT=3306
+        #     - DB_CHARSET=utf8mb4
+        #     - REDIS_CLIENT=phpredis
+        #     - REDIS_HOST=
+        #     - REDIS_PORT=6379
+        restart: always
+        networks:
+            - thinkphp-network
+
+networks:
+    thinkphp-network:
+        driver: bridge
