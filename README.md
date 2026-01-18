@@ -67,8 +67,6 @@ docker compose -f compose.test.yml down
 ```
 
 # 生产环境（prod）
-
-### 部署前准备工作
 ```
 # docker compose 启动
 docker compose -f compose.prod.yml up -d
