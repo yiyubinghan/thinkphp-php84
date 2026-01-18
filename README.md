@@ -28,6 +28,7 @@ ThinkPHP Version 8.1.4
             - /supervisor.d
                 - nginx.ini
                 - php-fpm.ini
+                - swoole.ini
             - supervisord.conf
         - Dockerfile
     - test
