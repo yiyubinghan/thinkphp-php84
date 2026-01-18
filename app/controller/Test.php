@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\BaseController;
 use think\facade\Db;
+use think\facade\Cache;
 
 class Test extends BaseController
 {
@@ -36,5 +37,12 @@ class Test extends BaseController
 
         //返回
         return $admins;
+    }
+
+    public function testRedis()
+    {
+        // 使用Redis缓存
+        Cache::store('redis')->set('name','lzx',10);
+        return Cache::store('redis')->get('name');
     }
 }

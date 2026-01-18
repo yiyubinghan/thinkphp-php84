@@ -33,5 +33,5 @@ Route::group('api', function (){
     Route::get('test-concurrency-1', 'test/testConcurrency1');
     Route::get('test-concurrency-2', 'test/testConcurrency2');
     Route::get('test-mysql', 'test/testMysql');
-    // Route::get('test-redis', [App\Http\Controllers\TestController::class, 'testRedis']);
+    Route::get('test-redis', 'test/testRedis');
 });

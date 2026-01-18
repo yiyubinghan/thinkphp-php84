@@ -25,5 +25,12 @@ return [
             'serialize'  => [],
         ],
         // 更多的缓存连接
+        // redis缓存
+        'redis'   =>  [
+            // 驱动方式
+            'type'   => env('REDIS_CLIENT', 'redis'),
+            // 服务器地址
+            'host'       => env('REDIS_HOST', '127.0.0.1'),
+        ],  
     ],
 ];

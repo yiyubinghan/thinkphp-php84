@@ -12,7 +12,7 @@ COPY docker/test/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/test/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # 安装系统依赖
-RUN apk add --no-cache nginx supervisor
+RUN apk add --no-cache nginx supervisor linux-headers $PHPIZE_DEPS
 
 # 复制 nginx配置文件
 COPY docker/test/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -25,6 +25,9 @@ COPY docker/test/supervisord/supervisor.d /etc/supervisor.d
 
 # 安装 PHP 扩展 bcmath swoole
 RUN docker-php-ext-install pdo_mysql
+
+# 安装 Redis 扩展
+RUN pecl install redis && docker-php-ext-enable redis
 
 # 复制
 COPY . .

@@ -17,9 +17,8 @@ services:
             - DB_PASS=
             - DB_PORT=3306
             - DB_CHARSET=utf8mb4
-        #     - REDIS_CLIENT=phpredis
-        #     - REDIS_HOST=
-        #     - REDIS_PORT=6379
+            - REDIS_CLIENT=redis
+            - REDIS_HOST=
         restart: always
         networks:
             - thinkphp-network
