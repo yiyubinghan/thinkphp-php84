@@ -1,5 +1,5 @@
 # 项目说明
-使用 ThinkPHP框架自定义 docker环境。自定义环境配置，含opcache、php-fpm、nginx、supervisor
+使用 ThinkPHP框架自定义 docker环境。自定义环境配置，含opcache、php-fpm、nginx、think-swoole、supervisor
 
 # 环境要求
 ```

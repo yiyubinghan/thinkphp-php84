@@ -12,7 +12,7 @@ COPY docker/dev/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/dev/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # 安装系统依赖
-RUN apk add --no-cache nginx supervisor linux-headers $PHPIZE_DEPS
+RUN apk add --no-cache nginx supervisor linux-headers $PHPIZE_DEPS brotli-dev brotli-static
 
 # 复制 nginx配置文件
 COPY docker/dev/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -24,10 +24,13 @@ COPY docker/dev/supervisord/supervisord.conf /etc/supervisord.conf
 COPY docker/dev/supervisord/supervisor.d /etc/supervisor.d
 
 # 安装 PHP 扩展 bcmath swoole
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql sockets pcntl
 
 # 安装 Redis 扩展
 RUN pecl install redis && docker-php-ext-enable redis
+
+# 安装 Swoole 扩展
+RUN pecl install swoole && docker-php-ext-enable swoole
 
 # 安装 Composer
 COPY --from=composer:2.9.2 /usr/bin/composer /usr/bin/composer
