@@ -12,14 +12,14 @@ services:
             - APP_DEBUG=true
             - DEFAULT_LANG=zh-cn
             - DB_TYPE=mysql
-            - DB_HOST=
-            - DB_NAME=
-            - DB_USER=
-            - DB_PASS=
+            - DB_HOST=192.168.64.1
+            - DB_NAME=thinkphp-php84-test
+            - DB_USER=root
+            - DB_PASS=123456
             - DB_PORT=3306
             - DB_CHARSET=utf8mb4
             - REDIS_CLIENT=redis
-            - REDIS_HOST=
+            - REDIS_HOST=192.168.64.1
         restart: always
         networks:
             - thinkphp-network
