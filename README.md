@@ -15,7 +15,6 @@ ThinkPHP Version 8.1.4
         - /nginx
             - /http.d
                 - default.conf
-                - octane.conf
             - nginx.conf
         - /php
             - opcache.ini
@@ -28,7 +27,6 @@ ThinkPHP Version 8.1.4
         - /supervisord
             - /supervisor.d
                 - nginx.ini
-                - octane.ini
                 - php-fpm.ini
             - supervisord.conf
         - Dockerfile
@@ -71,8 +69,6 @@ docker compose -f compose.test.yml down
 # 生产环境（prod）
 
 ### 部署前准备工作
-1、创建好数据库并修改数据库配置 compose.dev.yml
-
 ```
 # docker compose 启动
 docker compose -f compose.prod.yml up -d
