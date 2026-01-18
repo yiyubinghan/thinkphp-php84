@@ -26,11 +26,13 @@ COPY docker/dev/supervisord/supervisor.d /etc/supervisor.d
 # 安装 PHP 扩展 bcmath swoole
 RUN docker-php-ext-install pdo_mysql
 
-# 复制
-# COPY . .
-
 # 安装 Composer
 COPY --from=composer:2.9.2 /usr/bin/composer /usr/bin/composer
+
+# 运行脚本
+COPY docker/dev/shell/docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # 启动命令
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]

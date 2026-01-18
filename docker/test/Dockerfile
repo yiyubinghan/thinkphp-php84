@@ -38,5 +38,10 @@ RUN composer install
 # 设置文件权限
 RUN chown -R www-data:www-data /app && chmod -R 777 /app/runtime
 
+# 运行脚本
+COPY docker/test/shell/docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 # 启动命令
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
